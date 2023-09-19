@@ -1,0 +1,11 @@
+﻿@model IEnumerable<MVC_TiendaOrdenadores.Models.OrdenadorViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<p>
+    <a class="btn btm-sm btn-secondary" asp-action="Create">Create New</a>
+</p>
+@await Component.InvokeAsync("Ordenador")

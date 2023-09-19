@@ -1,0 +1,49 @@
+﻿@model MVC_TiendaOrdenadores.Models.OrdenadorViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>OrdenadorViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Coste)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Coste)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Calor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Calor)
+        </dd>
+        <dt class="col-sm-2">
+            <span>Componentes</span>
+        </dt>
+        <dd class="col-sm-10">
+            <ul class="list-group list-group-flush">
+                @foreach (var itemcomp in Model.ComponentesLIst!)
+                {
+                    <li class="list-group-item">
+                        @itemcomp.Descripcion - @itemcomp.Serie
+                    </li>
+                }
+            </ul>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

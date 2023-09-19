@@ -1,0 +1,80 @@
+﻿@model MVC_TiendaOrdenadores.Models.ComponenteViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Componente</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Serie)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Serie)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Calor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Calor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Megas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Megas)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cores)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cores)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Coste)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Coste)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd class = "col-sm-10">
+            @{
+                var enumOptions = ViewData["EnumComponenteOptions"] as List<SelectListItem>;
+                if (enumOptions != null)
+                {
+                    var selectedOption = enumOptions.FirstOrDefault(o => o.Value == Model.Tipo.ToString());
+                    @selectedOption?.Text
+                }
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ordenador)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Ordenador != null)
+            {
+                @Html.DisplayFor(model => model.Ordenador!.Name)
+            }
+            else
+            {
+                <span>No asignado</span>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
